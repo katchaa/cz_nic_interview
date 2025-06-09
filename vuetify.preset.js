@@ -7,19 +7,15 @@ const customTheme = {
   dark: false,
   colors: {
     background: '#F5F5F5',
-    surface: '#F5F5F5',
-    'surface-bright': '#F5F5F5',
-    'surface-light': '#E0E0E0',
-    'surface-variant': '#424242',
-    'on-surface-variant': '#E0E0E0',
+    surface: '#FFFFFF',
     primary: '#039BE5',
     'primary-darken-1': '#0277BD',
-    secondary: '#BDBDBD',
+    secondary: '#E0E0E0',
     'secondary-darken-1': '#757575',
-    error: '#B00020',
+    danger: '#D50000',
     info: '#00B0FF',
     success: '#00C853',
-    warning: '#FFD600',
+    warning: '#FFC400',
   },
 }
 
