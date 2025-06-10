@@ -2,37 +2,53 @@
 import AppHeader from '@/components/layout/AppHeader.vue'
 import AppDrawer from '@/components/layout/AppDrawer.vue'
 import AppMainGrid from '@/components/layout/AppMainGrid.vue'
-import { ref } from 'vue'
+import { ref, onBeforeMount } from 'vue'
+import axios from 'axios'
+import { drawerItems, userInformation } from '@/utils/placeholdes.utils.js'
 
-const drawerVisible = ref(true)
+// Variables
+const drawerVisible = ref(false)
+const data = ref({})
 
+// Methods
 const toggleDrawer = (event) => {
-  drawerVisible.value = event
+  return drawerVisible.value = event
 }
-const drawerItems = [
-  {
-    label: 'Registry',
-    icon: 'mdi-earth',
-  },
 
-  {
-    label: 'Home',
-    icon: 'mdi-home',
-  }
-]
+const getData = async () => {
+  await axios.get('domain-detail.json')
+    .then((response) => {
+      data.value = response.data
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
+
+// Hooks
+onBeforeMount(() =>  {
+  getData()
+})
 </script>
 
 <template>
   <v-app>
     <AppHeader
+      :user-info="userInformation"
       @toggle-drawer="toggleDrawer"
     />
 
     <AppDrawer
       :visible="drawerVisible"
-      :items="drawerItems" />
+      :items="drawerItems"
+    />
 
-    <AppMainGrid></AppMainGrid>
+    <template v-if="data">
+      <AppMainGrid
+        :data="data"
+      />
+    </template>
+
   </v-app>
 </template>
 

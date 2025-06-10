@@ -1,29 +1,37 @@
 <script setup>
-import { watch } from 'vue'
-
 const props = defineProps({
   activator: {
     type: String,
     required: true,
+  },
+  userName: {
+    type: String,
+    required: true,
+  },
+  userRole: {
+    type: String,
   }
 })
 
+//Methods
 const logout = () => {
   console.log('logout')
 }
 
+defineExpose({ logout })
 </script>
 
 <template>
   <v-menu
+    data-qa="user-menu"
     location="bottom right"
     :activator="props.activator"
     width="300"
   >
     <v-list class="rounded-0">
       <v-list-item
-        title="Jan Musílek"
-        subtitle="admin"
+        :title="userName"
+        :subtitle="userRole ? userRole : ''"
         tile
       >
         <template v-slot:prepend>

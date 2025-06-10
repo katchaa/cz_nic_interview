@@ -1,5 +1,5 @@
 <script setup>
-defineProps({
+const props = defineProps({
   title: {
     type: String
   }
@@ -7,15 +7,15 @@ defineProps({
 </script>
 
 <template>
-  <v-card max-height="400" class="ma-5">
-    <template v-if="title">
-      <v-card-title class="text-body-1 bg-secondary mb-3">
-          {{title }}
+  <v-card class="mb-5">
+    <template v-if="props.title">
+      <v-card-title class="text-body-2 bg-secondary mb-3">
+          {{ props.title }}:
       </v-card-title>
     </template>
-    <v-card-text>
+    <div class="px-5 pb-3 text-body-2" :class="!props.title ? 'py-3' : ''">
       <slot />
-    </v-card-text>
+    </div>
   </v-card>
 </template>
 

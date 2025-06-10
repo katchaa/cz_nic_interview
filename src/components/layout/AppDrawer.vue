@@ -13,6 +13,7 @@ defineProps({
   }
 })
 
+// Variables
 const activeItem = ref(0)
 </script>
 
@@ -42,7 +43,6 @@ const activeItem = ref(0)
 </template>
 
 <style scoped>
-
 /* remove default active list item overlay */
 ::v-deep(.v-list-item--active .v-list-item__overlay) {
   background-color: transparent !important;
