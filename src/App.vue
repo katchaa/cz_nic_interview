@@ -29,6 +29,8 @@ const getData = async () => {
 onBeforeMount(() =>  {
   getData()
 })
+
+defineExpose({getData})
 </script>
 
 <template>
